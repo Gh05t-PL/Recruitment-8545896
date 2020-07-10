@@ -15,7 +15,7 @@ class NumberScaleValidator extends ConstraintValidator
             return;
         }
 
-        if ( $this->getDecCount($constraint->scale) ) {
+        if ( $this->getDecCount((float)$value) > $constraint->scale ) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ value }}', $value)
                 ->addViolation();
