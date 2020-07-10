@@ -4,8 +4,6 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use App\Validator as MyAssert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -21,62 +19,36 @@ class User
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
-     * @Assert\NotBlank(message="Name can't be empty")
-     * @Assert\Regex(pattern="/^[a-z ,.'-]+$/i", message="Name must be written in arabic alphabet")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
-     * @Assert\NotBlank(message="Surname can't be empty")
-     * @Assert\Regex(pattern="/^[a-z ,.'-]+$/i", message="Name must be written in arabic alphabet")
      */
     private $surname;
 
     /**
      * @ORM\Column(type="smallint")
-     *
-     * @Assert\NotBlank(message="Age can't be empty")
-     * @Assert\Type(message="Age must be an integer", type="integer")
      */
     private $age;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
-     * @Assert\NotBlank(message="Phone number can't be empty")
-     * @Assert\Regex(
-     *     pattern="/(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})/i",
-     *     message="Phone number format must be valid"
-     * )
      */
     private $phoneNumber;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
-     * @Assert\NotBlank(message="Email can't be empty")
-     * @Assert\Email(message="Email must be valid")
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
-     * @Assert\NotBlank(message="Email can't be empty")
-     * @Assert\Type(type="string", message="Password must be a string")
-     * @Assert\Length(min="6", minMessage="Password must be at least 6 character long")
      */
     private $password;
 
     /**
      * @ORM\Column(type="decimal", precision=8, scale=2)
-     *
-     * @Assert\Type(type="numeric", message="Hourly Rate must be a number")
-     * @Assert\Positive(message="Hourly Rate must be positive number")
-     * @MyAssert\NumberScale(scale="2", message="Hourly Rate can have maximum 2 decimals")
      */
     private $hourlyRate;
 
