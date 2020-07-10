@@ -15,8 +15,9 @@
         "symfony/property-access": "5.1.*",
         "symfony/serializer": "5.1.*",
         "symfony/validator": "5.1.*",
-        "symfony/yaml": "5.1.*"
-    },
+        "symfony/yaml": "5.1.*",
+		"ext-json": "*"
+	},
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "symfony/maker-bundle": "^1.19"
