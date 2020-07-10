@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  # MySQL DB
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./data:/data/db
+    networks:
+      net:
+        ipv4_address: 192.2.8.2
+
+  # PHPMyAdmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.0
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: root
+    volumes:
+      - ./data:/data/db
+    networks:
+      net:
+        ipv4_address: 192.2.8.3
+
+networks:
+  net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.2.8.0/29
