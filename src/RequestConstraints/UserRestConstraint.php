@@ -80,6 +80,10 @@ class UserRestConstraint
                         'message' => 'field must be a numeric value',
                         'type' => 'numeric'
                     ]),
+                    new Assert\Type([
+                        'message' => 'field must be a numeric string',
+                        'type' => 'string'
+                    ]),
                     new MyAssert\NumberScale([
                         'message' => 'Hourly Rate can have maximum 2 decimals',
                         'scale' => 2
@@ -161,6 +165,10 @@ class UserRestConstraint
                     new Assert\Type([
                         'message' => 'field must be a numeric value',
                         'type' => 'numeric'
+                    ]),
+                    new Assert\Type([
+                        'message' => 'field must be a numeric string',
+                        'type' => 'string'
                     ]),
                     new MyAssert\NumberScale([
                         'message' => 'Hourly Rate can have maximum 2 decimals',
