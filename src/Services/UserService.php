@@ -73,18 +73,23 @@ class UserService
      */
     public function createUser(string $data): User
     {
-        /** @var User $user */
-        $user = $this->serializer->deserialize(
-            $data,
-            User::class,
-            'json'
-        );
+        $data = json_decode($data, true);
 
-        $violations = $this->validator->validate($user);
+        $violations = $this->validator->validate(
+            $data,
+            UserRestConstraint::getPostMethodConstraint()
+        );
 
         if ($violations->count() !== 0) {
             throw new ValidationException($violations);
         }
+
+        /** @var User $user */
+        $user = $this->serializer->denormalize(
+            $data,
+            User::class,
+            'json'
+        );
 
         $this->entityManager->persist($user);
         $this->entityManager->flush($user);
@@ -100,9 +105,21 @@ class UserService
      *
      * @return User
      * @throws EntityNotFoundException
+     * @throws ValidationException
      */
     public function updateUser(string $id, string $data)
     {
+        $data = json_decode($data, true);
+
+        $violations = $this->validator->validate(
+            $data,
+            UserRestConstraint::getPutMethodConstraint()
+        );
+
+        if ($violations->count() !== 0) {
+            throw new ValidationException($violations);
+        }
+
         /** @var User|null $user */
         $user = $this->repository->find($id);
 
@@ -110,18 +127,12 @@ class UserService
             throw new EntityNotFoundException();
         }
 
-        $this->serializer->deserialize(
+        $this->serializer->denormalize(
             $data,
             User::class,
             'json',
             ['object_to_populate' => $user]
         );
-
-        $violations = $this->validator->validate($user);
-
-        if ($violations->count() !== 0) {
-            throw new ValidationException($violations);
-        }
 
         $this->entityManager->flush($user);
 
