@@ -118,13 +118,13 @@ class UserRESTController extends AbstractController implements IRestJsonControll
      */
     public function delete(string $id): JsonResponse
     {
-        $user = $this->userService->deleteUser($id);
+        $id = $this->userService->deleteUser($id);
 
         return new JsonResponse(
             ApiHelper::prepareResponse(
                 true,
                 [
-                    'id' => $user->getId()
+                    'id' => $id
                 ]
             ),
             Response::HTTP_OK
