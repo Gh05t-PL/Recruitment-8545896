@@ -43,7 +43,7 @@ class JsonControllerSubscriber implements EventSubscriberInterface
 
         [$controller, $methodName] = $event->getController();
 
-        if ( $controller instanceof IRestJsonController && $methodName !== 'fetch' ) {
+        if ( $controller instanceof IRestJsonController && ($methodName !== 'fetch' && $methodName !== 'delete') ) {
             $violations = $this->validator->validate(
                 $event->getRequest()->getContent(),
                 new Assert\Json(['message' => 'Request should be valid JSON'])
