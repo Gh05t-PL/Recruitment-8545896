@@ -44,13 +44,14 @@ class UserRESTController extends AbstractController implements IRestJsonControll
     public function fetch(string $id): JsonResponse
     {
         return new JsonResponse(
-            $this->serializer->serialize(
-                $this->userService->fetchUser($id),
-                'json'
+            ApiHelper::prepareResponse(
+                true,
+                $this->serializer->normalize(
+                    $this->userService->fetchUser($id),
+                    'json'
+                )
             ),
-            Response::HTTP_OK,
-            [],
-            true
+            Response::HTTP_OK
         );
     }
 
