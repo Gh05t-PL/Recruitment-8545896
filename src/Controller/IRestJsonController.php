@@ -26,14 +26,14 @@ interface IRestJsonController
     public function post(Request $request): JsonResponse;
 
     /**
-     * Controller method used for updating resource via HTTP PUT method
+     * Controller method used for updating resource partially via HTTP PATCH method
      *
      * @param string $id
      * @param Request $request
      *
      * @return JsonResponse
      */
-    public function put(string $id, Request $request): JsonResponse;
+    public function patch(string $id, Request $request): JsonResponse;
 
     /**
      * Controller method used for removal of resource via HTTP DELETE method

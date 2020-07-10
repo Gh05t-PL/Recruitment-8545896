@@ -81,7 +81,7 @@ class UserRESTController extends AbstractController implements IRestJsonControll
     }
 
     /**
-     * Controller method used for updating resource partially via HTTP PUT method
+     * Controller method used for updating resource partially via HTTP PATCH method
      *
      * @param string $id
      *
@@ -90,9 +90,9 @@ class UserRESTController extends AbstractController implements IRestJsonControll
      * @return JsonResponse
      *
      * @throws \App\Exceptions\EntityNotFoundException|\App\Exceptions\ValidationException
-     * @Route(path="api/v1/user/{id}", methods={"PUT"})
+     * @Route(path="api/v1/user/{id}", methods={"PATCH"})
      */
-    public function put(string $id, Request $request): JsonResponse
+    public function patch(string $id, Request $request): JsonResponse
     {
         $user = $this->userService->updateUser($id, $request->getContent());
 
