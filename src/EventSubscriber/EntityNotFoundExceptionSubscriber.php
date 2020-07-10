@@ -3,7 +3,6 @@
 namespace App\EventSubscriber;
 
 use App\Exceptions\EntityNotFoundException;
-use App\Exceptions\ValidationException;
 use App\Utils\ApiHelper;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;

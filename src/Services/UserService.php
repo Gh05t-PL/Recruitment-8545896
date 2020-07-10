@@ -8,7 +8,7 @@ use App\Entity\User;
 use App\Exceptions\EntityNotFoundException;
 use App\Exceptions\ValidationException;
 use App\Repository\UserRepository;
-use App\Utils\ViolationHelper;
+use App\RequestConstraints\UserRestConstraint;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;

@@ -6,7 +6,6 @@ namespace App\Exceptions;
 
 use App\Utils\ViolationHelper;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
-use Throwable;
 
 class ValidationException extends \Exception
 {
