@@ -89,7 +89,7 @@ class UserRESTController extends AbstractController implements IRestJsonControll
      *
      * @return JsonResponse
      *
-     * @throws \App\Exceptions\EntityNotFoundException
+     * @throws \App\Exceptions\EntityNotFoundException|\App\Exceptions\ValidationException
      * @Route(path="api/v1/user/{id}", methods={"PUT"})
      */
     public function put(string $id, Request $request): JsonResponse
