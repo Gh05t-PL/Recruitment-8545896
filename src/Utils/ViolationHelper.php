@@ -10,15 +10,15 @@ class ViolationHelper
 {
     static public function normalizeViolations(ConstraintViolationListInterface $violations)
     {
-        $formatedViolationList = [];
+        $formattedViolationList = [];
         for ( $i = 0; $i < $violations->count(); $i++ ) {
             $violation = $violations->get($i);
-            $formatedViolationList[] = [
+            $formattedViolationList[] = [
                 'property' => $violation->getPropertyPath(),
                 'message' => $violation->getMessage(),
                 'code' => $violation->getCode()
             ];
         }
-        return $formatedViolationList;
+        return $formattedViolationList;
     }
 }
