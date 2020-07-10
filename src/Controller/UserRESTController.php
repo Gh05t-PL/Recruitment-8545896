@@ -81,7 +81,7 @@ class UserRESTController extends AbstractController implements IRestJsonControll
     }
 
     /**
-     * Controller method used for updating resource via HTTP PUT method
+     * Controller method used for updating resource partially via HTTP PUT method
      *
      * @param string $id
      *
